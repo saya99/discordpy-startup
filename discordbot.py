@@ -10,7 +10,12 @@ token = os.environ['DISCORD_BOT_TOKEN']
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
 
-
+@client.event
+async def on_message(message) #for tatsumaki
+    if "credits reset in" in message.content.lower():
+        m = "今日の分のdailyは使用済みです。翌朝９時の日付リセットをお待ちくださいっ。"
+        await message.channel.send(m)
+        
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
